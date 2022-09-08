@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!-- Tell iOS not to automatically link certain text strings. -->
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <title></title> <!--   The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 23 - 41 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Tells the email client that only light styles are provided but the client can transform them to dark. A duplicate of meta color-scheme meta tag above. */
+        :root {
+          color-scheme: light;
+          supported-color-schemes: light;
+        }
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: forces Samsung Android mail clients to use the entire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+	    /* What it does: Hover styles for buttons */
+	    .button-td,
+	    .button-a {
+	        transition: all 100ms ease-in;
+	    }
+	    .button-td-primary:hover,
+	    .button-a-primary:hover {
+	        background: #555555 !important;
+	        border-color: #555555 !important;
+	    }
+
+	    /* Media Queries */
+	    @media screen and (max-width: 600px) {
+
+	        /* What it does: Adjust typography on small screens to improve readability */
+	        .email-container p {
+	            font-size: 17px !important;
+	        }
+
+	    }
+
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+</head>
+<!--
+	The email background color (#222222) is defined in three places:
+	1. body tag: for most email clients
+	2. center tag: for Gmail and Inbox mobile apps and web versions of Gmail, GSuite, Inbox, Yahoo, AOL, Libero, Comcast, freenet, Mail.ru, Orange.fr
+	3. mso conditional: For Windows 10 Mail
+-->
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #ffffff;">
+	<center role="article" aria-roledescription="email" lang="en" style="width: 100%; background-color: #ffffff;">
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #ffffff;">
+    <tr>
+    <td>
+    <![endif]-->
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="max-height:0; overflow:hidden; mso-hide:all;" aria-hidden="true">
+            Reminder: Annual Meeting 10-12/Oct/22 registration
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!--
+            Set the email width. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 600px.
+            2. MSO tags for Desktop Windows Outlook enforce a 600px width.
+        -->
+        <div style="max-width: 600px; margin: 0 auto;" class="email-container">
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600">
+            <tr>
+            <td>
+            <![endif]-->
+
+	        <!-- Email Body : BEGIN -->
+	        <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+
+                <!-- Hero Image, Flush : BEGIN -->
+                <tr>
+                    <td >
+                        <!-- <a data-flickr-embed="true" href="https://www.flickr.com/photos/195809294@N06/52123931738/in/dateposted-public/" title="Screenshot 2022-06-05 at 13.49.20"><img src="https://live.staticflickr.com/65535/52123931738_227fb3fa68_z.jpg" width="640" height="330" alt="Screenshot 2022-06-05 at 13.49.20"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script> -->
+                        <!-- <a data-flickr-embed="true" href="https://www.flickr.com/photos/195809294@N06/52123890487/in/dateposted-public/" title="COMFA-logo-colorful"><img src="https://live.staticflickr.com/65535/52123890487_bf3c69caf6_c.jpg" width="800" height="291" alt="COMFA-logo-colorful"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script> -->
+                        <a data-flickr-embed="true" href="https://www.flickr.com/photos/195809294@N06/52128294817/in/dateposted-public/" title="Screenshot 2022-06-07 at 16.06.10"><img src="https://live.staticflickr.com/65535/52128294817_de508f1caa.jpg" width="500" height="179" alt="Screenshot 2022-06-07 at 16.06.10"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+                    </td>
+                </tr>
+                <!-- Hero Image, Flush : END -->
+
+                <!-- 1 Column Text + Button : BEGIN -->
+                <tr>
+                    <td>
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <h1 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 25px; line-height: 30px; color: #B0C45C; font-weight: normal;">NEWSLETTER</h1>
+                                    <p style="margin: 0; color: #86829C">3 August 2022</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <p>Dear COMFA members,</p>
+                                    <p>This is a kind reminder to <strong><a href="https://imperial.eu.qualtrics.com/jfe/form/SV_0c5D0dVzc0pnlPw">register</a></strong> for the COMFA Annual Meeting in Porto, Portugal on<strong> 10-12 of October, 2022.</strong> Please note that registration is required regardless of the mode of your participation (in-person or online). The relevant information about the meeting is compied below for your convenience.</p>
+                                    <h2 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 24px; color: #86829C; font-weight: bold;">Invitation to the Annual Meeting in Porto 10-12 OCTOBER: guide and scientific programme</h2>
+                                    <p style="margin: 0;">We would like to remind you that <strong>COMFA Annual Meeting 2022</strong> will be held on <strong>10th – 12th October</strong> in <strong>Porto, Portugal</strong> and we will be delighted to hold a meeting in person, thanks to kind help of the local organisers Joana Costa and Isabel Mafra! We are aiming for a hybrid meeting to allow those who are unable to attend in person to join the event online.<br><br>The <strong>meeting venue</strong> is Faculdade de Farmácia, Universidade do Porto. Rua de Jorge Viterbo Ferreira, 228. 4050-313 Porto, Portugal<br><br>Please let us know if you are aiming to attend the meeting or join online filling a simple <strong><a href="https://imperial.eu.qualtrics.com/jfe/form/SV_0c5D0dVzc0pnlPw">registration form</a>.</strong> This is very important for organisers to make all necessary preparations for the meeting!<br><br>Please feel free to share this information with potentially interested colleagues.<br><br>We would be most grateful if you could kindly <strong>register by 15th of August.</strong><br><br>The preliminary program is to be circulated shortly, but the following structure is planned for now:<br><br></p>
+                                    <p><strong>Monday, 10.10.2022</strong></p>
+                                    <ul>
+                                        <li>Management Committee meeting</li>
+                                        <li>Discussion of administrative issues and Grant period planning</li>
+                                        <li>Projects update and discussions</li>
+                                        <li>Presentations of STSM and VM grant holders</li>
+                                    </ul>
+                                    <p><strong>Tuesday, 11.10.2022</strong></p>
+                                    <ul>
+                                        <li> Discussion of outcomes from the systematic reviews of qualitative and quantitative studies</li>
+                                        <li> Preparation of the long list of outcomes for the Delphi</li>
+                                        <li> Discussion of the Delphi process</li>
+                                        <li> Potential COMFA projects discussions in smaller groups</li>
+                                        <li> Social dinner </li>
+                                    </ul>
+                                    <p><strong>Wednesday, 12.10.2022</strong></p>
+                                    <ul>
+                                        <li>Finalisation of the long list of outcomes and descriptions</li>
+                                        <li>Annual meeting outputs</li>
+                                        <li>Wrap-up session</li>
+                                    </ul>
+                                    <u><strong>Some useful tips from Joana and Isabel to those aiming to attend in person:</strong></u>
+                                    <p><b>Upon arrival at the airport Francisco de Sá Carneiro, Porto, there are several ways to get to Porto city centre:</b></p>
+                                    <ul>
+                                        <li>By METRO – there is a station at the airport (Violet line (E)). You need to get a card (“Andante azul” 0.60€) and charge it with a Z4 trip (2.00€). This can be made in the automatic machines located in every Metro station. With this card you can get to the station Casa da Música (connection with several buses) or Trindade (city centre – Av. Aliados). To get to the Faculty of Pharmacy University of Porto (FFUP), go to Casa da Música station, where you can get several connection buses, such as 507 or 208 that stop at FFUP (Palácio de Cristal). <a href="https://www.metrodoporto.pt/uploads/document/file/471/EUT_____PMV_CMYK.pdf">Click for the map of the Metro line</a>. To plan your trip, you can go to <a href="https://en.metrodoporto.pt/">en.metrodoporto.pt/</a>. <strong>IMPORTANT:</strong> before entering the metro, make sure to validate the card. The title is valid for 1 h trip. By Metro/bus the trip from airport to FFUP will take around 40 minutes.</li>
+                                        <li>By BUS – there is also an option to go to the city centre by bus 601, which goes from the airport to Casa da Música that takes about 50 minutes. For other options, consult <a href="https://www.stcp.pt/en/tourism/from-and-to-the-airport/daytime-and-night-network/">this page</a></li>
+                                        <li>By TAXI – there are taxis in the arrival zone at the airport. The trip to the city centre costs around 25-30€ and takes about 20-30 minutes. </li>
+                                        <li>By TRANSFER – there are several options for transfers. The trip to the city centre costs around 25-30€ and takes about 20-30 minutes. <a href="https://www.ziptransfers.com/en/vehicle-extras?origen=opo&destino=porto&pax=2">Example via this link</a></li>
+                                        <li>By UBER – the platform works quite well in Porto city. The trip from the airport to the city centre costs about 10-20€ and takes about 20-30 minutes. </li>
+                                    </ul>
+                                    <p><b>Accommodation:<b></p>
+                                    <p>Around FFUP and in 2-15 min walking there are also several hotel options. Some suggestions are listed below:</p>
+                                    <ul>
+                                        <li><a href="https://www.hfhotels.com/pt/hoteis/hf-ipanema-porto-pt/">Hotel HF IPANEMA Porto</a></li>
+                                        <li><a href="https://www.hfhotels.com/pt/hoteis/hf-fenix-porto-pt/">Hotel HF FÉNIX PORTO</a></li>
+                                        <li><a href="https://www.hfhotels.com/pt/hoteis/hf-tuela-porto-pt/">Hotel HF TUELA PORTO</a></li>
+                                        <li><a href="https://pt.vincciporto.com/">Hotel Vincii Porto</a></li>
+                                        <li><a href="https://www.vilagale.com/pt/hoteis/porto-e-norte/vila-gale-porto-ribeira">Hotel Vila Galé Porto Ribeira</a> </li>
+                                        <li><a href="https://www.predicadosdodouro.pt/en/">Predicados do Douro Palace</a></li>
+                                        <li><a href="http://casasdopalacioapartment.hotelsporto.net/pt/">Casas do Palácio</a></li>
+                                    </ul>
+                                    <p>FFUP is also near the city centre, at about 15-20 min walking, where many other accommodation options can be found. </p>
+                                    <p><b>Tourism:</b></p>
+                                    <p>In the city centre, there are several iconic places to visit.</p>
+                                    <ul>
+                                        <li>RIBEIRA by the DOURO RIVER</li>
+                                        <li><a href="https://www.visitportugal.com/en/content/se-catedral-do-porto">Sé Catedral do Porto</a></li>
+                                        <li><a href="https://ambiente.cm-porto.pt/parques-e-jardins/jardins-do-palacio-de-cristal">Palácio de Cristal</a></li>
+                                        <li><a href="http://www.cavesvinhodoporto.com/centro_multimedia.html">PORTO WINE CELLARS</a></li>
+                                        <li>PONTE D. LUIS that crosses to the other city Vila Nova de Gaia (located around Porto wine cellars) </li>
+                                        <li><a href="https://palaciodabolsa.com/">Palácio da Bolsa</a></li>
+                                        <li><a href="https://www.visitportugal.com/en/content/cp-comboios-de-portugal-estacao-de-sao-bento">Estação São Bento</a></li>
+                                        <li><a href="https://www.livrarialello.pt/pt/home">LELLO library</a></li>
+                                        <li><a href="http://www.torredosclerigos.pt/pt/">Torre dos Clérigos</a></li>
+                                    </ul>
+                                    <br><br>
+                                    <p>For more information, please contact us at <a href=’mailto:mail@comfa.eu’>mail@comfa.eu</a></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text + Button : END -->
+
+                <!-- Clear Spacer : BEGIN -->
+                <tr>
+                    <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">
+                        &nbsp;
+                    </td>
+                </tr>
+                <!-- Clear Spacer : END -->
+                <tr>
+                    <td style="padding: 0 20px;">
+                        <!-- Button : BEGIN -->
+                            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto;">
+                                <tr>
+                                    <td class="button-td button-td-primary" style="border-radius: 4px; background: #B0C45C;">
+									    <a class="button-a button-a-primary" href="mailto:mail@comfa.eu" style="background: #B0C45C; border: 1px solid #B0C45C; font-family: sans-serif; font-size: 15px; line-height: 15px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;">Email us</a>
+									</td>
+                                </tr>
+                            </table>
+                        <!-- Button : END -->
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+            </table>
+            <!-- Email Body : END -->
+
+            <!-- Email Footer : BEGIN -->
+	        <table align="center" =role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+                <tr>
+                    <td style="padding: 20px; font-family: sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #727271;">
+                        <webversion style="color: #86829C; text-decoration: underline; font-weight: bold;"><span =class="unstyle-auto-detected-links><a href="https://comfa.eu/>comfa.eu</span></webversion>
+                        <br><br>
+						Core Outcome Measures for Food Allergy<br><span class="unstyle-auto-detected-links">Cost Action CA18227<br><a href="mailto:mail@comfa.eu">mail@comfa.eu</a></span>
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 20px; font-family: sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #727271;">
+                        <img src="https://ufukavrupa.org.tr/sites/default/files/styles/thumbnail_800x450/public/2022-02/cost_logo.jpg?itok=X1sKiL41" width="200" height="" alt="alt_text" border="0" style="width: 100%; max-width: 200px; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #555555;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 20px; font-family: sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #727271;">
+                        <img src="https://cdn.viewpointsystem.com/neu/wp-content/uploads/2021/06/01212349/eu_logo_financiado-eu-h2020-600x163-1.jpg" width="200" height="" alt="alt_text" border="0" style="width: 100%; max-width: 200px; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #555555;">
+                    </td>
+                </tr>
+            </table>
+            <!-- Email Footer : =
+END -->
+            <!--[if mso]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+        
+    <!--[if mso | IE]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </center>
+</body>
+</html>
